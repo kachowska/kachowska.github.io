@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 0 0% 6%;
+  --fg: 210 20% 98%;
+  --muted: 215 16% 70%;
+  --card: 222 47% 11%;
+  --acc: 221 83% 53%;
+}
+body { @apply bg-neutral-900 text-neutral-100; }
+.container { @apply max-w-6xl mx-auto px-4; }
+.btn { @apply inline-flex items-center gap-2 rounded-xl px-4 py-2 font-semibold transition; }
+.btn-primary { @apply bg-blue-600 hover:bg-blue-500 text-white; }
+.btn-ghost { @apply border border-neutral-700 text-neutral-100 hover:bg-neutral-800; }
+.card { @apply bg-neutral-900/60 border border-neutral-800 rounded-2xl shadow; }
+.card-body { @apply p-6; }
+.subtitle { @apply text-neutral-400; }
+
+/* animated background for hero */
+.gradient-bg {
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(79,124,255,.20), transparent 60%),
+              radial-gradient(1000px 500px at 90% 20%, rgba(16,185,129,.20), transparent 60%),
+              radial-gradient(900px 450px at 50% 90%, rgba(236,72,153,.20), transparent 60%);
+  background-size: 200% 200%;
+  animation: gradientMove 18s ease infinite;
+}
+@keyframes gradientMove {
+  0%   { background-position: 0% 0%, 100% 0%, 50% 100%; }
+  50%  { background-position: 100% 100%, 0% 100%, 50% 0%; }
+  100% { background-position: 0% 0%, 100% 0%, 50% 100%; }
+}
+
+.card:hover { transform: translateY(-2px); transition: transform .2s ease; }
