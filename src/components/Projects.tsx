@@ -14,8 +14,8 @@ export default function Projects() {
           tags={['Python','Pandas','Plotly','Statsmodels','Cohorts','Funnel']}
           links={[
             { label: 'Live demo', href: 'https://kachowska.github.io/olist-funnel-dashboard/' },
-            { label: 'A/B report', href: 'https://kachowska.github.io/olist-funnel-dashboard/abtest.html', ghost: True },
-            { label: 'GitHub', href: 'https://github.com/kachowska/olist-funnel-dashboard', ghost: True }
+            { label: 'A/B report', href: 'https://kachowska.github.io/olist-funnel-dashboard/abtest.html', ghost: true },
+            { label: 'GitHub', href: 'https://github.com/kachowska/olist-funnel-dashboard', ghost: true }
           ]}
         />
 
@@ -23,7 +23,7 @@ export default function Projects() {
           title="Coming soon"
           description="Next analytics project is on the way."
           tags={['Python','EDA']}
-          links={[{ label: 'GitHub', href: 'https://github.com/kachowska', ghost: True }]}
+          links={[{ label: 'GitHub', href: 'https://github.com/kachowska', ghost: true }]}
         />
       </div>
     </section>
