@@ -1,41 +1,60 @@
-# Portfolio — Vite + React + Tailwind
+# Katsiaryna Pukhouskaya — Data Analyst Portfolio
 
-Modern portfolio with animated hero, avatar, projects, skills & languages, and a contact form.
-Build outputs to `docs/` so it can be hosted via GitHub Pages (Deploy from a branch).
+Live site: **https://kachowska.github.io/**
 
-## Quickstart
+A concise, modern portfolio for a junior data analyst showcasing projects, skills, and ways to get in touch.  
+Built with React + Vite + Tailwind + Framer Motion.
+
+## Highlights
+
+- Hero section with avatar and animated background
+- Featured projects with links to GitHub and live demos
+- Skills & Languages (Python, SQL, React, etc.)
+- Contact form (EmailJS-ready) and “Download CV” button
+- Fast, responsive, accessible design
+
+## Featured project
+
+**E-commerce Sales Funnel Dashboard (Olist)**  
+End-to-end workflow: ETL → metrics → Plotly dashboard → mock A/B test  
+- Live demo: https://kachowska.github.io/olist-funnel-dashboard/  
+- A/B report: https://kachowska.github.io/olist-funnel-dashboard/abtest.html  
+- Code: https://github.com/kachowska/olist-funnel-dashboard
+
+## Tech stack
+
+- **Frontend:** React, TypeScript, Vite, TailwindCSS, Framer Motion  
+- **Data viz (in projects):** Pandas, Plotly, statsmodels  
+- **Forms (optional):** EmailJS
+
+## Project structure
+
+kachowska.github.io/
+├─ public/ # static assets (your avatar image.png, resume.pdf)
+├─ src/
+│ ├─ components/ # Hero, Projects, Skills, About, Contact, etc.
+│ ├─ App.tsx
+│ └─ main.tsx
+├─ docs/ # production build (deployed by GitHub Pages)
+├─ vite.config.ts # base config + outDir=docs
+└─ tailwind.config.cjs
+
+
+## Development
+
 ```bash
-npm i
+npm install
 npm run dev
-```
 
-## Build (GitHub Pages)
-```bash
-npm run build   # outputs to docs/
-```
-
-## EmailJS (optional)
-Create `.env.local` with:
-```
-VITE_EMAILJS_PUBLIC_KEY=your_public_key
-VITE_EMAILJS_SERVICE_ID=your_service_id
-VITE_EMAILJS_TEMPLATE_ID=your_template_id
-```
-Fields sent: `name`, `email`, `message`.
-
-## Links to edit
-- `src/components/Projects.tsx` — project cards (add more).
-- `public/image.png` — replace with your photo.
-- `public/resume.pdf` — replace with your resume.
-
-## Deploy (user site: kachowska.github.io)
-- Create the repo `kachowska.github.io` (public).
-- In repo Settings → Pages: Source = Deploy from a branch, Branch = main, Folder = /docs.
-
-Then:
-```bash
-npm run build
+Build & Deploy
+This repository deploys via GitHub Pages from the docs/ folder.
+npm run build          # outputs production files to docs/
 git add .
-git commit -m "Publish portfolio"
-git push origin main
-```
+git commit -m "Build site"
+git push
+
+If you fork this project as a project site (not a user site), set base in vite.config.ts to /<repo-name>/.
+Contact
+GitHub: https://github.com/kachowska
+Portfolio: https://kachowska.github.io/
+The contact form on the website delivers messages via EmailJS (optional).
