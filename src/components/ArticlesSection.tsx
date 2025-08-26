@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 
 type Article = {
@@ -5,88 +6,149 @@ type Article = {
   title: string;
   date: string;
   summary: string;
-  cover: string; // e.g. "/articles/price_distribution.png"
+  cover: string;
   tags?: string[];
   content: React.ReactNode;
 };
 
-const ArticleBody: React.FC = () => (
-  <article className="prose prose-slate max-w-none">
-    <h2>Analytical Study of Drivers of Residential Real-Estate Prices in Poland</h2>
-    <p>
-      Goal: identify key determinants of price and show distributions, correlations,
-      and regional differences in the Polish housing market. The dataset includes
-      price, area, rooms, building type, year built, regional macro indicators, and coordinates.
-    </p>
+const FullArticle: React.FC = () => (
+  <div className="text-slate-900">
+<section className="mx-auto max-w-4xl">
+  <header className="mb-6">
+    <p className="uppercase tracking-wide text-xs text-slate-500">Research Article</p>
+    <h2 id="title" className="text-2xl md:text-3xl font-bold text-slate-900">Drivers of Residential Real‑Estate Prices in Poland: An Exploratory Data Analysis</h2>
+    <p className="mt-2 text-slate-700">Abstract: We examine distributions, regional differences, and correlates of listing prices using a large sample of Polish housing offers.
+    We focus on price, area, rooms, building type, construction year, macro indicators, and coordinates. We summarize central tendencies, visualize patterns,
+    and discuss limitations and next steps.</p>
+  </header>
 
-    <h3>Methodology</h3>
-    <ul>
-      <li>Data cleaning and prep in Python (pandas).</li>
-      <li>EDA and charts in matplotlib/seaborn.</li>
-      <li>Derived metrics such as price per m².</li>
-    </ul>
+  <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-8">
+    <aside className="md:sticky md:top-6 h-max bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm text-slate-700">
+      <nav className="space-y-2">
+        <a className="block hover:underline" href="#data">Data</a>
+        <a className="block hover:underline" href="#methods">Methods</a>
+        <a className="block hover:underline" href="#price-dist">Price distribution</a>
+        <a className="block hover:underline" href="#area-dist">Area distribution</a>
+        <a className="block hover:underline" href="#price-area">Price vs area</a>
+        <a className="block hover:underline" href="#regional">Regional patterns</a>
+        <a className="block hover:underline" href="#building">Building type</a>
+        <a className="block hover:underline" href="#correlations">Correlations</a>
+        <a className="block hover:underline" href="#ppsqm">Median price per m²</a>
+        <a className="block hover:underline" href="#limits">Limitations</a>
+        <a className="block hover:underline" href="#future">Future work</a>
+      </nav>
+    </aside>
 
-    <h3>Distributions</h3>
-    <figure>
-      <img src="/articles/price_distribution.png" alt="Distribution of Price" />
-      <figcaption>Right-skewed price distribution with a long tail.</figcaption>
-    </figure>
-    <figure>
-      <img src="/articles/area_distribution.png" alt="Distribution of Area" />
-      <figcaption>Most listings are 30–80 m².</figcaption>
-    </figure>
+    <div className="space-y-8 text-slate-900">
+      <section id="data">
+        <h3 className="text-xl font-semibold mb-2">Data</h3>
+        <p>Listings contain <strong>price</strong>, <strong>area</strong>, <strong>rooms</strong>, <strong>building type</strong>,
+        <strong> construction year</strong>, regional macro indicators, and <strong>latitude/longitude</strong>.</p>
+      </section>
 
-    <h3>Geography</h3>
-    <figure>
-      <img src="/articles/listings_per_voivodeship.png" alt="Listings per voivodeship" />
-      <figcaption>Regional activity. Mazowieckie leads by count.</figcaption>
-    </figure>
+      <section id="methods">
+        <h3 className="text-xl font-semibold mb-2">Methods</h3>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Cleaning and feature engineering in Python (pandas).</li>
+          <li>Visualizations in matplotlib; kernel density overlays for distributions.</li>
+          <li>Derived metrics such as <em>price per m²</em>.</li>
+        </ul>
+      </section>
 
-    <h3>Price vs Area</h3>
-    <figure>
-      <img src="/articles/price_vs_area_scatter.png" alt="Price vs area scatter" />
-      <figcaption>Price grows with area, variance remains high.</figcaption>
-    </figure>
+      <section id="price-dist">
+        <h3 className="text-xl font-semibold mb-3">Price distribution</h3>
+        <figure className="space-y-2">
+          <img src="/articles/price_distribution.png" alt="Price distribution" className="rounded-xl border border-slate-200 w-full" />
+          <figcaption className="text-sm text-slate-600">Right-skewed with a long upper tail, indicating high-end outliers.</figcaption>
+        </figure>
+      </section>
 
-    <h3>Regional and Building-type Effects</h3>
-    <figure>
-      <img src="/articles/price_by_voivodeship_box.png" alt="Price by voivodeship" />
-      <figcaption>Highest medians around Warsaw (Mazowieckie).</figcaption>
-    </figure>
-    <figure>
-      <img src="/articles/price_by_building_type_box.png" alt="Price by building type" />
-      <figcaption>Type matters: apartments/row houses tend to be pricier.</figcaption>
-    </figure>
+      <section id="area-dist">
+        <h3 className="text-xl font-semibold mb-3">Area distribution</h3>
+        <figure className="space-y-2">
+          <img src="/articles/area_distribution.png" alt="Area distribution" className="rounded-xl border border-slate-200 w-full" />
+          <figcaption className="text-sm text-slate-600">Most homes cluster between 30–80 m².</figcaption>
+        </figure>
+      </section>
 
-    <h3>Correlations and Price per m²</h3>
-    <figure>
-      <img src="/articles/correlation_matrix.png" alt="Correlation matrix" />
-      <figcaption>Strongest links: price with area and regional average salary.</figcaption>
-    </figure>
-    <figure>
-      <img src="/articles/median_price_per_m2.png" alt="Median price per m² by voivodeship" />
-      <figcaption>Median price per m² varies by region; Mazowieckie and Pomorskie are higher.</figcaption>
-    </figure>
+      <section id="price-area">
+        <h3 className="text-xl font-semibold mb-3">Price vs area</h3>
+        <figure className="space-y-2">
+          <img src="/articles/price_vs_area_scatter.png" alt="Price vs area" className="rounded-xl border border-slate-200 w-full" />
+          <figcaption className="text-sm text-slate-600">Prices increase with area but with wide variance across sizes.</figcaption>
+        </figure>
+      </section>
 
-    <h3>Conclusions</h3>
-    <ul>
-      <li>Main drivers: location, area, building type, regional incomes.</li>
-      <li>Newer stock carries a premium over secondary market.</li>
-      <li>Long-term price growth outpaced CPI and wages in several regions.</li>
-    </ul>
-  </article>
+      <section id="regional">
+        <h3 className="text-xl font-semibold mb-3">Regional patterns</h3>
+        <figure className="space-y-2">
+          <img src="/articles/listings_per_voivodeship.png" alt="Listings per voivodeship" className="rounded-xl border border-slate-200 w-full" />
+          <figcaption className="text-sm text-slate-600">Mazowieckie has the most listings, consistent with Warsaw’s market size.</figcaption>
+        </figure>
+        <figure className="space-y-2">
+          <img src="/articles/price_by_voivodeship_box.png" alt="Price by voivodeship" className="rounded-xl border border-slate-200 w-full" />
+          <figcaption className="text-sm text-slate-600">Distribution of prices by voivodeship shows higher medians around Warsaw and coastal regions.</figcaption>
+        </figure>
+      </section>
+
+      <section id="building">
+        <h3 className="text-xl font-semibold mb-3">Building type effects</h3>
+        <figure className="space-y-2">
+          <img src="/articles/price_by_building_type_box.png" alt="Price by building type" className="rounded-xl border border-slate-200 w-full" />
+          <figcaption className="text-sm text-slate-600">Apartments and row houses generally price above blocks and old tenements.</figcaption>
+        </figure>
+      </section>
+
+      <section id="correlations">
+        <h3 className="text-xl font-semibold mb-3">Correlations</h3>
+        <figure className="space-y-2">
+          <img src="/articles/correlation_matrix.png" alt="Correlation matrix" className="rounded-xl border border-slate-200 w-full" />
+          <figcaption className="text-sm text-slate-600">Price correlates strongly with area and regional average salary.</figcaption>
+        </figure>
+      </section>
+
+      <section id="ppsqm">
+        <h3 className="text-xl font-semibold mb-3">Median price per m² by region</h3>
+        <figure className="space-y-2">
+          <img src="/articles/median_price_per_m2.png" alt="Median price per m2" className="rounded-xl border border-slate-200 w-full" />
+          <figcaption className="text-sm text-slate-600">Regional medians show persistent affordability gaps.</figcaption>
+        </figure>
+      </section>
+
+      <section id="limits">
+        <h3 className="text-xl font-semibold mb-2">Limitations</h3>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Listings reflect asking prices, not transactions.</li>
+          <li>Omitted variables may bias simple correlations.</li>
+          <li>Temporal changes not fully controlled without panel modeling.</li>
+        </ul>
+      </section>
+
+      <section id="future">
+        <h3 className="text-xl font-semibold mb-2">Future work</h3>
+        <ul className="list-disc ml-5 space-y-1">
+          <li>Hedonic regression with fixed effects.</li>
+          <li>Temporal models to quantify growth by region and segment.</li>
+          <li>Geospatial smoothing and travel-time accessibility features.</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</section>
+</div>
 );
+
 
 const articles: Article[] = [
   {
     id: "poland-real-estate-eda",
-    title: "Polish Real-Estate EDA: Distributions and Price Drivers",
+    title: "Polish Real‑Estate EDA: Distributions and Price Drivers",
     date: "2025-08-26",
     summary:
-      "EDA of the Polish housing market: price and area distributions, regional differences, correlations, and building-type effects.",
+      "Substantial research article with full text, charts, methodology, and limitations. Original uploaded document attached.",
     cover: "/articles/price_distribution.png",
     tags: ["EDA", "Real Estate", "Poland"],
-    content: <ArticleBody />,
+    content: <FullArticle />,
   },
 ];
 
@@ -112,23 +174,22 @@ const Card: React.FC<{ a: Article; onOpen: (a: Article) => void }> = ({ a, onOpe
   </button>
 );
 
-const Modal: React.FC<{ open: boolean; onClose: () => void; children: React.ReactNode }> = ({
-  open,
-  onClose,
-  children,
-}) => {
+const Modal: React.FC<{ open: boolean; onClose: () => void; children: React.ReactNode }> = ({ open, onClose, children }) => {
   if (!open) return null;
   return (
     <div className="fixed inset-0 z-50">
       <div className="absolute inset-0 bg-black/50" onClick={onClose} />
-      <div className="absolute inset-0 md:inset-10 bg-white text-slate-900 rounded-none md:rounded-2xl overflow-hidden shadow-2xl">
+      <div className="absolute inset-0 md:inset-8 bg-white text-slate-900 rounded-none md:rounded-2xl overflow-hidden shadow-2xl">
         <div className="h-14 flex items-center justify-between px-4 border-b">
           <h2 className="text-base font-semibold">Article</h2>
-          <button onClick={onClose} className="px-3 py-1 rounded-md bg-gray-100 hover:bg-gray-200">
-            Close
-          </button>
+          <div className="flex items-center gap-2">
+            <a href="/articles/original_article.docx" download className="px-3 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-sm border">Download .docx</a>
+            <button onClick={onClose} className="px-3 py-1 rounded-md bg-gray-100 hover:bg-gray-200">Close</button>
+          </div>
         </div>
-        <div className="h-[calc(100%-3.5rem)] overflow-y-auto p-4 md:p-8">{children}</div>
+        <div className="h-[calc(100%-3.5rem)] overflow-y-auto p-4 md:p-8">
+          {children}
+        </div>
       </div>
     </div>
   );
