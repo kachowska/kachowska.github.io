@@ -24,6 +24,7 @@ export default function Hero() {
             <div className="mt-6 flex flex-wrap gap-3">
               <a href="/resume.pdf" className="btn btn-primary" download>Download CV</a>
               <a href="#contact" className="btn btn-ghost">Contact me</a>
+          
             </div>
           </div>
 

@@ -19,7 +19,28 @@ export default function Projects() {
           ]}
         />
 
-        <ProjectCard
+        
+<ProjectCard
+  title="Kraków Real Estate Price Analysis (2018–2025)"
+  description="Exploratory + predictive analysis of Kraków property prices: cleaning 25k+ listings, feature engineering (price/m², distance-to-center, new build), spatial trends, and an interactive dashboard."
+  tags={['Python','Pandas','scikit-learn','GeoPandas','SQL','Looker Studio']}
+  links={[
+    { label: 'Case study', href: 'https://github.com/kachowska/krakow-realestate-analysis/blob/main/README.md' },
+    { label: 'Dashboard', href: 'https://lookerstudio.google.com/s/l216sC_s_qs', ghost: true },
+    { label: 'GitHub', href: 'https://github.com/kachowska/krakow-realestate-analysis', ghost: true }
+  ]}
+/>
+
+<ProjectCard
+  title="Sea Battle (Battleship) — Web Game"
+  description="Turn-based JS game: drag‑and‑drop placement, rotation on click, hit-streak logic, ship reveal on sink, score counter, final win screen; localStorage save and vs. computer."
+  tags={['JavaScript','HTML/CSS','Game Logic','LocalStorage']}
+  links={[
+    { label: 'Live demo', href: 'https://kachowska.github.io/sea-battle/' },
+    { label: 'GitHub', href: 'https://github.com/kachowska/sea-battle', ghost: true }
+  ]}
+/>
+<ProjectCard
           title="Coming soon"
           description="Next analytics project is on the way."
           tags={['Python','EDA']}
