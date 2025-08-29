@@ -45,3 +45,8 @@ This repository serves the compiled static files via GitHub Pages. To deploy upd
 2. Copy the generated `dist/` contents into this repository.
 3. Commit and push to the `main` branch. GitHub Pages will automatically serve the updated site at `https://kachowska.github.io`.
 
+
+### Sitemap
+
+Run `./update-sitemap.sh` after copying new build outputs into this repository to regenerate `sitemap.xml` with all article pages. The `robots.txt` file points to this sitemap so search engines can discover new pages.
+
