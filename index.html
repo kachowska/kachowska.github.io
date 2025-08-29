@@ -2,17 +2,38 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#0b1220" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      (function(){
+        try {
+          var stored = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var theme = stored || (prefersDark ? 'dark' : 'light');
+          if (theme === 'dark') document.documentElement.classList.add('dark');
+        } catch (e) {}
+      })();
+    </script>
     <title>Katsiaryna Pukhouskaya — Data Analyst</title>
     <meta name="description" content="Portfolio of Katsiaryna Pukhouskaya (kachowska) — Data Analyst." />
     <link rel="canonical" href="https://kachowska.github.io/" />
-    <link rel="preconnect" href="https://plausible.io" />
-    <link rel="dns-prefetch" href="//plausible.io" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Analytics preconnect -->
+    <link rel="preconnect" href="https://plausible.io" />
+    <link rel="dns-prefetch" href="//plausible.io" />
+
+    <!-- Icons / PWA -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon-B_S-Mdii.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KICA8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjE2IiBmaWxsPSIjMWYyOTM3Ii8+CiAgPHRleHQgeD0iNTAiIHk9IjU3IiBmb250LXNpemU9IjQ2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjBhNWZhIiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiI+SzwvdGV4dD4KPC9zdmc+Cg==" color="#0ea5e9" />
+
+    <!-- Social / Open Graph -->
     <meta property="og:title" content="Katsiaryna Pukhouskaya — Data Analyst" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Katsiaryna Pukhouskaya" />
@@ -29,7 +50,8 @@
     <meta name="twitter:title" content="Katsiaryna Pukhouskaya — Data Analyst" />
     <meta name="twitter:description" content="Portfolio of Katsiaryna Pukhouskaya (kachowska) — Data Analyst." />
     <meta name="twitter:image" content="https://kachowska.github.io/assets/share.jpg" />
-    <meta name="twitter:image:alt" content="Katsiaryna Pukhouskaya — Data Analyst" />
+
+    <!-- JSON-LD Person -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -44,6 +66,8 @@
         ]
       }
     </script>
+
+    <!-- JSON-LD WebSite with SearchAction -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -57,21 +81,10 @@
         }
       }
     </script>
-    <link rel="icon" type="image/svg+xml" href="/assets/favicon-B_S-Mdii.svg" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <link rel="mask-icon" href="/assets/favicon-B_S-Mdii.svg" color="#0ea5e9" />
-    <script type="module" crossorigin src="/assets/index-CLT8W5PJ.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DVZVJflz.css">
-    <link rel="stylesheet" href="/assets/custom.css">
+    <script type="module" crossorigin src="/assets/index-lXsNjsEf.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CED6EHBi.css">
   </head>
   <body>
     <div id="root"></div>
-    <noscript>
-      <div style="padding:1rem;background:#0b1220;color:#e5e7eb;text-align:center">
-        JavaScript is required to view this site. Please enable JavaScript.
-      </div>
-    </noscript>
-    <script defer data-domain="kachowska.github.io" src="https://plausible.io/js/script.js"></script>
   </body>
 </html>
