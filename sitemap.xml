@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://kachowska.github.io/</loc></url>
-  <url><loc>https://kachowska.github.io/#articles</loc></url>
+  <url><loc>https://kachowska.github.io/articles/area</loc></url>
+  <url><loc>https://kachowska.github.io/articles/correlation</loc></url>
+  <url><loc>https://kachowska.github.io/articles/listings</loc></url>
+  <url><loc>https://kachowska.github.io/articles/median</loc></url>
+  <url><loc>https://kachowska.github.io/articles/olist</loc></url>
+  <url><loc>https://kachowska.github.io/articles/original</loc></url>
+  <url><loc>https://kachowska.github.io/articles/price</loc></url>
 </urlset>
