@@ -5,11 +5,23 @@ BASE_URL="https://kachowska.github.io"
 
 urls=("$BASE_URL/")
 
-# Extract article routes from bundled assets
-routes=$(rg -o "/articles/[a-zA-Z0-9\-]+" -N assets/index-*.js | cut -d: -f2 | sort -u)
+extract_routes() {
+  # Try ripgrep if available, otherwise fall back to grep.
+  if command -v rg >/dev/null 2>&1; then
+    rg -o "/articles/[A-Za-z0-9\-]+" -N assets/index-*.js 2>/dev/null | awk -F: '{print $NF}' | sort -u
+  else
+    # grep: -h suppress filename, -o only match, -E extended regex
+    grep -h -oE "/articles/[A-Za-z0-9\-]+" assets/index-*.js 2>/dev/null | sort -u || true
+  fi
+}
+
+routes=$(extract_routes || true)
 
 for route in $routes; do
-  urls+=("$BASE_URL$route")
+  # Ensure each route starts with /articles/
+  case "$route" in
+    /articles/*) urls+=("$BASE_URL$route");;
+  esac
 done
 
 {
