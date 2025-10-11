@@ -1,19 +1,25 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 
 export default function Navbar() {
   return (
-    <header className="sticky top-0 z-50 border-b border-neutral-800 bg-neutral-900/80 backdrop-blur">
-      <div className="container flex items-center justify-between py-3">
-        <div className="font-bold">Katsiaryna Pukhouskaya</div>
-        <nav className="hidden md:flex items-center gap-6 text-sm text-neutral-300">
-          <a href="#projects" className="hover:text-white">Projects</a>
-          <a href="#skills" className="hover:text-white">Skills</a>
-          <a href="#about" className="hover:text-white">About</a>
-          <a href="#contact" className="hover:text-white">Contact</a>
-          <a href="/resume.pdf" target="_blank" rel="noreferrer" className="hover:text-white">Resume</a>
-          <a href="https://github.com/kachowska" target="_blank" rel="noreferrer" className="hover:text-white">GitHub</a>
+    <motion.header 
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6 }}
+      className="sticky top-0 z-50 border-b border-sage-100 bg-cream-50/95 backdrop-blur-sm"
+    >
+      <div className="container flex items-center justify-between py-5">
+        <a href="#" className="font-serif text-xl font-light text-sage-500 tracking-tight hover:text-sage-400 transition-colors">
+          KP
+        </a>
+        <nav className="hidden md:flex items-center gap-8 text-xs uppercase tracking-wider text-sage-400">
+          <a href="#projects" className="hover:text-sage-500 transition-colors">Work</a>
+          <a href="#articles" className="hover:text-sage-500 transition-colors">Writing</a>
+          <a href="#about" className="hover:text-sage-500 transition-colors">About</a>
+          <a href="#contact" className="hover:text-sage-500 transition-colors">Contact</a>
         </nav>
       </div>
-    </header>
+    </motion.header>
   )
 }

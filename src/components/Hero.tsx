@@ -1,40 +1,56 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import Typing from './Typing'
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden">
-      <div className="absolute inset-0 gradient-bg pointer-events-none" />
-      <div className="container relative py-16 md:py-24">
+    <section className="relative bg-cream-50 min-h-[90vh] flex items-center">
+      <div className="container py-20 md:py-32">
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="grid md:grid-cols-[1fr,280px] gap-10 items-center"
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="max-w-4xl mx-auto text-center space-y-8"
         >
-          <div className="max-w-3xl">
-            <div className="text-sm text-blue-300 font-semibold mb-3">Data Analytics • Product • Experimentation</div>
-            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">Katsiaryna Pukhouskaya</h1>
-            <p className="subtitle mt-2 text-lg">
-              Junior Data Analyst & React Developer — I turn messy data into clear, actionable insights.
-              <br />
-              <Typing items={['Python • Pandas • SQL', 'Plotly • Streamlit • A/B tests', 'React • Tailwind • TypeScript']} />
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a href="/resume.pdf" className="btn btn-primary" download>Download CV</a>
-              <a href="#contact" className="btn btn-ghost">Contact me</a>
-            </div>
+          {/* Minimalist tagline */}
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <div className="h-px w-12 bg-sage-300" />
+            <span className="text-xs uppercase tracking-[0.2em] text-sage-400 font-light">
+              Data Analytics & Development
+            </span>
+            <div className="h-px w-12 bg-sage-300" />
           </div>
 
-          <div className="justify-self-center md:justify-self-end">
-            <div className="rounded-full p-[3px] bg-gradient-to-tr from-blue-500 via-emerald-400 to-pink-500">
-              <img
-                src="/image.png"
-                alt="Katsiaryna portrait"
-                className="h-[240px] w-[240px] object-cover rounded-full border border-neutral-800 shadow-lg"
-              />
-            </div>
+          {/* Main heading with elegant typography */}
+          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-light leading-[1.1] text-sage-500 tracking-tight">
+            Katsiaryna<br/>
+            <span className="font-serif font-normal">Pukhouskaya</span>
+          </h1>
+
+          {/* Subtitle */}
+          <p className="text-sage-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-light">
+            Turning complex data into clear, actionable insights. Specialized in Python, SQL, 
+            and building interactive data visualizations that drive business decisions.
+          </p>
+
+          {/* Clean CTA buttons */}
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-8">
+            <a href="#projects" className="btn btn-primary">
+              View Work
+            </a>
+            <a href="/resume.pdf" className="btn btn-ghost" download>
+              Download CV
+            </a>
+          </div>
+
+          {/* Minimal skills indicator */}
+          <div className="pt-12 flex flex-wrap items-center justify-center gap-6 text-xs uppercase tracking-wider text-sage-300">
+            <span>Python</span>
+            <span className="w-1 h-1 rounded-full bg-sage-300" />
+            <span>SQL</span>
+            <span className="w-1 h-1 rounded-full bg-sage-300" />
+            <span>React</span>
+            <span className="w-1 h-1 rounded-full bg-sage-300" />
+            <span>Data Viz</span>
           </div>
         </motion.div>
       </div>

@@ -68,16 +68,25 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="container py-12">
-      <h2 className="text-2xl md:text-3xl font-bold">Contact</h2>
-      <p className="subtitle mt-2">
-        Send me a message — I’ll get back to you.
-      </p>
+    <section id="contact" className="container section-padding bg-cream-50">
+      <div className="max-w-3xl mx-auto text-center mb-12">
+        <div className="flex items-center justify-center gap-3 mb-6">
+          <div className="h-px w-12 bg-sage-300" />
+          <span className="text-xs uppercase tracking-[0.2em] text-sage-400 font-light">
+            Get In Touch
+          </span>
+          <div className="h-px w-12 bg-sage-300" />
+        </div>
+        <h2 className="font-serif text-4xl md:text-5xl font-light text-sage-500 mb-4">Contact</h2>
+        <p className="text-sage-400 font-light">
+          Send me a message — I'll get back to you.
+        </p>
+      </div>
 
       <form
         ref={formRef}
         onSubmit={onSubmit}
-        className="mt-6 grid gap-4 max-w-2xl"
+        className="max-w-2xl mx-auto grid gap-6"
       >
         {/* Honeypot */}
         <input
@@ -96,7 +105,7 @@ export default function Contact() {
           type="text"
           placeholder="Your name"
           required
-          className="bg-neutral-900 border border-neutral-700 rounded-xl px-4 py-3 outline-none focus:border-blue-500"
+          className="bg-cream-200 border border-sage-200 px-6 py-4 outline-none focus:border-sage-300 focus:bg-white transition-colors text-sage-500 placeholder:text-sage-300"
         />
 
         <input
@@ -104,22 +113,22 @@ export default function Contact() {
           type="email"
           placeholder="Email address"
           required
-          className="bg-neutral-900 border border-neutral-700 rounded-xl px-4 py-3 outline-none focus:border-blue-500"
+          className="bg-cream-200 border border-sage-200 px-6 py-4 outline-none focus:border-sage-300 focus:bg-white transition-colors text-sage-500 placeholder:text-sage-300"
         />
 
         <textarea
           name="message"
           placeholder="Message"
-          rows={6}
+          rows={8}
           required
-          className="bg-neutral-900 border border-neutral-700 rounded-xl px-4 py-3 outline-none focus:border-blue-500"
+          className="bg-cream-200 border border-sage-200 px-6 py-4 outline-none focus:border-sage-300 focus:bg-white transition-colors text-sage-500 placeholder:text-sage-300 resize-none"
         />
 
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col sm:flex-row items-center gap-4">
           <button
             type="submit"
             disabled={status === 'sending'}
-            className={`px-5 py-3 rounded-xl text-white bg-blue-600 hover:bg-blue-500 transition-colors ${
+            className={`btn btn-primary w-full sm:w-auto ${
               status === 'sending' ? 'opacity-60 cursor-not-allowed' : ''
             }`}
           >
@@ -132,22 +141,22 @@ export default function Contact() {
 
           <a
             href={mailtoHref()}
-            className="text-sm underline opacity-80 hover:opacity-100"
+            className="text-xs uppercase tracking-wider text-sage-400 hover:text-sage-500 transition-colors"
           >
             or email me directly
           </a>
         </div>
 
         {status === 'sent' && (
-          <p className="text-green-400">Thank you — your message has been sent.</p>
+          <p className="text-sage-500 text-sm text-center">Thank you — your message has been sent.</p>
         )}
         {status === 'error' && (
-          <p className="text-red-400">
+          <p className="text-red-600 text-sm text-center">
             {errorText || 'Something went wrong. Please try again.'}
           </p>
         )}
         {!EMAIL_READY && (
-          <p className="text-amber-300 text-sm">
+          <p className="text-sage-400 text-sm text-center">
             Email service is in fallback mode (mailto). Messages will open in your
             mail client.
           </p>

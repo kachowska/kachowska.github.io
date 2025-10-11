@@ -1,60 +1,75 @@
-# Katsiaryna Pukhouskaya — Data Analyst Portfolio
+# Portfolio
 
-Live site: **https://kachowska.github.io/**
+My personal portfolio site for data analyst work.
 
-A concise, modern portfolio for a junior data analyst showcasing projects, skills, and ways to get in touch.  
-Built with React + Vite + Tailwind + Framer Motion.
+Live: https://kachowska.github.io/
 
-## Highlights
+## What's in here
 
-- Hero section with avatar and animated background
-- Featured projects with links to GitHub and live demos
-- Skills & Languages (Python, SQL, React, etc.)
-- Contact form (EmailJS-ready) and “Download CV” button
-- Fast, responsive, accessible design
+This is a React portfolio showing my data analysis projects, skills, and contact info. Built with React + Vite because it's fast, and Tailwind for styling because I got tired of writing CSS.
 
-## Featured project
+Main sections:
+- Projects I've worked on (real estate analysis, healthcare ML, e-commerce stuff)
+- Skills and languages
+- Blog posts with actual writeups of the analysis work
+- Contact form (uses EmailJS but has mailto fallback)
 
-**E-commerce Sales Funnel Dashboard (Olist)**  
-End-to-end workflow: ETL → metrics → Plotly dashboard → mock A/B test  
-- Live demo: https://kachowska.github.io/olist-funnel-dashboard/  
-- A/B report: https://kachowska.github.io/olist-funnel-dashboard/abtest.html  
-- Code: https://github.com/kachowska/olist-funnel-dashboard
+## Tech
 
-## Tech stack
+**Frontend**
+- React 18 + TypeScript
+- Vite for build/dev
+- TailwindCSS
+- Framer Motion for animations
 
-- **Frontend:** React, TypeScript, Vite, TailwindCSS, Framer Motion  
-- **Data viz (in projects):** Pandas, Plotly, statsmodels  
-- **Forms (optional):** EmailJS
+**Data work** (in the actual projects, not this repo)
+- Python, Pandas, NumPy
+- Plotly for visualizations
+- scikit-learn, statsmodels
 
-## Project structure
-
-kachowska.github.io/
-├─ public/ # static assets (your avatar image.png, resume.pdf)
-├─ src/
-│ ├─ components/ # Hero, Projects, Skills, About, Contact, etc.
-│ ├─ App.tsx
-│ └─ main.tsx
-├─ docs/ # production build (deployed by GitHub Pages)
-├─ vite.config.ts # base config + outDir=docs
-└─ tailwind.config.cjs
-
-
-## Development
+## Setup
 
 ```bash
 npm install
 npm run dev
+```
 
-Build & Deploy
-This repository deploys via GitHub Pages from the docs/ folder.
-npm run build          # outputs production files to docs/
-git add .
-git commit -m "Build site"
+Runs on localhost:5173 by default.
+
+## Building
+
+```bash
+npm run build
+```
+
+Outputs to `docs/` folder. GitHub Pages is set up to serve from there.
+
+After building:
+```bash
+git add docs/
+git commit -m "update build"
 git push
+```
 
-If you fork this project as a project site (not a user site), set base in vite.config.ts to /<repo-name>/.
-Contact
+## Project structure
+
+```
+/
+├── public/           # static files (images, resume PDF)
+├── src/
+│   ├── components/   # all the React components
+│   ├── App.tsx
+│   └── main.tsx
+├── docs/             # build output (what gets deployed)
+└── vite.config.ts
+```
+
+## Notes
+
+If you fork this as a project site (not username.github.io), you'll need to set `base` in `vite.config.ts` to your repo name.
+
+Contact form needs EmailJS keys in `.env.local` if you want it to actually send emails. Otherwise it just opens your mail client.
+
+## Contact
+
 GitHub: https://github.com/kachowska
-Portfolio: https://kachowska.github.io/
-The contact form on the website delivers messages via EmailJS (optional).
