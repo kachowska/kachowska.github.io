@@ -12,7 +12,6 @@ export default defineConfig({
         manualChunks: {
           vendor: ['react', 'react-dom'],
           animations: ['framer-motion'],
-          forms: ['react-hook-form'],
           icons: ['lucide-react']
         }
       }
