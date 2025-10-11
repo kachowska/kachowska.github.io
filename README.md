@@ -61,34 +61,3 @@ Main sections:
    npm run preview
    ```
 
-## 📁 Project Structure
-
-```
-src/
-├── components/           # React components
-│   ├── About.tsx        # About section with stats
-│   ├── Blog.tsx         # Articles with search/filter
-│   ├── Contact.tsx      # Contact form with validation
-│   ├── Experience.tsx   # Interactive experience timeline
-│   ├── Footer.tsx       # Footer with social links
-│   ├── Hero.tsx         # Hero section with animations
-│   ├── Navbar.tsx       # Navigation with theme toggle
-│   ├── Preloader.tsx    # Loading animation
-│   ├── Projects.tsx     # Project showcase with filters
-│   ├── Skills.tsx       # Skills with progress bars
-│   ├── Testimonials.tsx # Testimonials carousel
-│   ├── LazyImage.tsx    # Optimized image component
-│   ├── ScrollToTop.tsx  # Scroll to top button
-│   └── ThemeProvider.tsx # Theme context provider
-├── hooks/               # Custom React hooks
-│   └── usePerformance.ts # Performance optimization hooks
-├── utils/               # Utility functions
-│   └── pwa.ts          # PWA functionality
-├── App.tsx             # Main app component
-├── main.tsx            # App entry point
-└── index.css           # Global styles and Tailwind
-```
-
-## Contact
-
-GitHub: https://github.com/kachowska
