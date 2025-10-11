@@ -1,6 +1,75 @@
-import React from 'react'
+import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+import { 
+  Github,
+  Linkedin,
+  Mail,
+  ArrowUp,
+  Heart,
+  Code,
+  BarChart3,
+  MapPin,
+  Phone
+} from 'lucide-react'
 
-export default function Footer() {
+const Footer = () => {
+  const [ref, inView] = useInView({
+    threshold: 0.1,
+    triggerOnce: true
+  })
+
+  const currentYear = new Date().getFullYear()
+
+  const quickLinks = [
+    { name: 'About', href: '#about' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'Experience', href: '#experience' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Blog', href: '#blog' },
+    { name: 'Contact', href: '#contact' }
+  ]
+
+  const services = [
+    'Data Analysis',
+    'Business Intelligence',
+    'Machine Learning',
+    'Market Research',
+    'Dashboard Development',
+    'Consulting'
+  ]
+
+  const socialLinks = [
+    {
+      icon: Github,
+      href: 'https://github.com/kachowska',
+      label: 'GitHub',
+      color: 'hover:text-gray-400'
+    },
+    {
+      icon: Linkedin,
+      href: 'https://www.linkedin.com/in/katsiaryna-pukhouskaya-0086b8195/',
+      label: 'LinkedIn',
+      color: 'hover:text-blue-400'
+    },
+    {
+      icon: Mail,
+      href: 'mailto:katsiaryna.pukhouskaya@email.com',
+      label: 'Email',
+      color: 'hover:text-green-400'
+    }
+  ]
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <footer className="border-t border-sage-100 bg-cream-50 mt-20">
       <div className="container py-12">
@@ -37,3 +106,5 @@ export default function Footer() {
     </footer>
   )
 }
+
+export default Footer

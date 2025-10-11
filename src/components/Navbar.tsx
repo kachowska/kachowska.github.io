@@ -1,7 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-export default function Navbar() {
   return (
     <motion.header 
       initial={{ y: -20, opacity: 0 }}
@@ -23,3 +22,5 @@ export default function Navbar() {
     </motion.header>
   )
 }
+
+export default Navbar

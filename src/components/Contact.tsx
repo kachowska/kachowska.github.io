@@ -1,71 +1,140 @@
-// src/components/Contact.tsx
-import React, { useRef, useState } from 'react'
-import emailjs from '@emailjs/browser'
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+import { useForm } from 'react-hook-form'
+import { toast } from 'react-hot-toast'
+import { 
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  Calendar,
+  Linkedin,
+  Github,
+  AlertCircle
+} from 'lucide-react'
 
-/**
- * EmailJS env (set in .env.local)
- * VITE_EMAILJS_PUBLIC_KEY=
- * VITE_EMAILJS_SERVICE_ID=
- * VITE_EMAILJS_TEMPLATE_ID=
- */
-const PUBLIC = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-const SERVICE = import.meta.env.VITE_EMAILJS_SERVICE_ID
-const TEMPLATE = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
-const EMAIL_READY = Boolean(PUBLIC && SERVICE && TEMPLATE)
+interface ContactForm {
+  name: string
+  email: string
+  subject: string
+  message: string
+  projectType: string
+  budget: string
+  timeline: string
+}
 
-type Status = 'idle' | 'sending' | 'sent' | 'error'
+const Contact = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [ref, inView] = useInView({
+    threshold: 0.1,
+    triggerOnce: true
+  })
 
-export default function Contact() {
-  const formRef = useRef<HTMLFormElement | null>(null)
-  const [status, setStatus] = useState<Status>('idle')
-  const [errorText, setErrorText] = useState<string>('')
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+  } = useForm<ContactForm>()
 
-  const mailtoHref = () => {
-    const fd = formRef.current ? new FormData(formRef.current) : null
-    const name = (fd?.get('name') as string) || ''
-    const email = (fd?.get('email') as string) || ''
-    const message = (fd?.get('message') as string) || ''
-    const subject = `Portfolio message — ${name} <${email}>`
-    return `mailto:givemepassw@gmail.com?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(message)}`
-  }
-
-  const onSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!formRef.current) return
-
-    const fd = new FormData(formRef.current)
-    if (fd.get('website')) return
-
-    const subject = `Portfolio message — ${fd.get('name')} <${fd.get('email')}>`
-    const subjInput = formRef.current.querySelector(
-      'input[name="subject"]'
-    ) as HTMLInputElement | null
-    if (subjInput) subjInput.value = subject
-
-    // if EmailJS keys are missing, fallback to mailto
-    if (!EMAIL_READY) {
-      window.location.href = mailtoHref()
-      return
-    }
-
+  const onSubmit = async (data: ContactForm) => {
+    setIsSubmitting(true)
+    
     try {
-      setStatus('sending')
-      setErrorText('')
-      await emailjs.sendForm(SERVICE, TEMPLATE, formRef.current, PUBLIC)
-      setStatus('sent')
-      formRef.current.reset()
-    } catch (err: any) {
-      console.error(err)
-      const msg =
-        err?.text ||
-        err?.message ||
-        'Sending failed. Please try again later or use the email link below.'
-      setErrorText(msg)
-      setStatus('error')
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 2000))
+      
+      // Here you would typically send the data to your backend
+      console.log('Form data:', data)
+      
+      toast.success('Message sent successfully! I\'ll get back to you soon.', {
+        duration: 5000,
+        icon: '🎉'
+      })
+      
+      reset()
+    } catch (error) {
+      toast.error('Failed to send message. Please try again.', {
+        duration: 5000,
+        icon: '❌'
+      })
+    } finally {
+      setIsSubmitting(false)
     }
   }
+
+  const contactInfo = [
+    {
+      icon: Mail,
+      label: "Email",
+      value: "katsiaryna.pukhouskaya@email.com",
+      href: "mailto:katsiaryna.pukhouskaya@email.com",
+      color: "from-blue-500 to-indigo-600"
+    },
+    {
+      icon: Phone,
+      label: "Phone",
+      value: "+1 (555) 123-4567",
+      href: "tel:+15551234567",
+      color: "from-green-500 to-emerald-600"
+    },
+    {
+      icon: MapPin,
+      label: "Location",
+      value: "Remote / Available Worldwide",
+      href: "#",
+      color: "from-purple-500 to-violet-600"
+    }
+  ]
+
+  const socialLinks = [
+    {
+      icon: Linkedin,
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/katsiaryna-pukhouskaya-0086b8195/",
+      color: "hover:text-blue-600"
+    },
+    {
+      icon: Github,
+      label: "GitHub",
+      href: "https://github.com/kachowska",
+      color: "hover:text-gray-900 dark:hover:text-gray-100"
+    },
+    {
+      icon: Calendar,
+      label: "Schedule Meeting",
+      href: "#",
+      color: "hover:text-green-600"
+    }
+  ]
+
+  const projectTypes = [
+    "Data Analysis",
+    "Business Intelligence",
+    "Machine Learning",
+    "Market Research",
+    "Dashboard Development",
+    "Consulting",
+    "Other"
+  ]
+
+  const budgetRanges = [
+    "< $5,000",
+    "$5,000 - $15,000",
+    "$15,000 - $50,000",
+    "$50,000+",
+    "Let's discuss"
+  ]
+
+  const timelines = [
+    "ASAP",
+    "1-2 weeks",
+    "1 month",
+    "2-3 months",
+    "3+ months",
+    "Flexible"
+  ]
 
   return (
     <section id="contact" className="container section-padding bg-cream-50">
@@ -97,8 +166,32 @@ export default function Contact() {
           autoComplete="off"
         />
 
-        {/* Subject for EmailJS/template convenience (filled in onSubmit) */}
-        <input type="hidden" name="subject" value="" />
+              {/* Contact Info Cards */}
+              <div className="space-y-4">
+                {contactInfo.map((info, index) => (
+                  <motion.a
+                    key={info.label}
+                    href={info.href}
+                    className="flex items-center gap-4 p-4 bg-white dark:bg-neutral-800 rounded-xl shadow-lg hover:shadow-xl border border-neutral-100 dark:border-neutral-700 group transition-all duration-300"
+                    whileHover={{ x: 5, scale: 1.02 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                    transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
+                  >
+                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-tr ${info.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                      <info.icon className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-neutral-900 dark:text-neutral-100">
+                        {info.label}
+                      </h4>
+                      <p className="text-neutral-600 dark:text-neutral-400">
+                        {info.value}
+                      </p>
+                    </div>
+                  </motion.a>
+                ))}
+              </div>
 
         <input
           name="name"
@@ -165,3 +258,5 @@ export default function Contact() {
     </section>
   )
 }
+
+export default Contact

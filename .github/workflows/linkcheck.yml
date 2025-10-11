@@ -1,0 +1,26 @@
+name: Link Checker
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '0 3 * * 0'
+  workflow_dispatch:
+
+jobs:
+  lychee:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run lychee on local files and live site
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: >-
+            --verbose --no-progress --require-https
+            --timeout 20 --retry-wait-time 2 --max-redirects 5
+            ./index.html ./404.html ./public/404.html ./sitemap.xml ./robots.txt
+            https://kachowska.github.io/
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

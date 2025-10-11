@@ -29,6 +29,123 @@ Main sections:
 
 ## Setup
 
+### Prerequisites
+- Node.js (version 18 or newer)
+- npm or yarn
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/kachowska/portfolio-enhanced.git
+   cd portfolio-enhanced
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Build for production**
+   ```bash
+   npm run build
+   ```
+
+5. **Preview production build**
+   ```bash
+   npm run preview
+   ```
+
+## 📁 Project Structure
+
+```
+src/
+├── components/           # React components
+│   ├── About.tsx        # About section with stats
+│   ├── Blog.tsx         # Articles with search/filter
+│   ├── Contact.tsx      # Contact form with validation
+│   ├── Experience.tsx   # Interactive experience timeline
+│   ├── Footer.tsx       # Footer with social links
+│   ├── Hero.tsx         # Hero section with animations
+│   ├── Navbar.tsx       # Navigation with theme toggle
+│   ├── Preloader.tsx    # Loading animation
+│   ├── Projects.tsx     # Project showcase with filters
+│   ├── Skills.tsx       # Skills with progress bars
+│   ├── Testimonials.tsx # Testimonials carousel
+│   ├── LazyImage.tsx    # Optimized image component
+│   ├── ScrollToTop.tsx  # Scroll to top button
+│   └── ThemeProvider.tsx # Theme context provider
+├── hooks/               # Custom React hooks
+│   └── usePerformance.ts # Performance optimization hooks
+├── utils/               # Utility functions
+│   └── pwa.ts          # PWA functionality
+├── App.tsx             # Main app component
+├── main.tsx            # App entry point
+└── index.css           # Global styles and Tailwind
+```
+
+## 🎯 Key Enhancements
+
+### 1. Interactive Hero Section
+- **Dynamic Role Animation**: Cycles through professional titles
+- **Floating Elements**: Animated background particles
+- **Gradient Animations**: Moving gradient backgrounds
+- **Skill Pills**: Interactive technology tags
+
+### 2. Advanced Project Showcase
+- **Category Filtering**: Filter by project type
+- **Search Functionality**: Search across titles and descriptions
+- **Featured Projects**: Highlighted major projects
+- **Detailed Metrics**: Performance indicators for each project
+
+### 3. Enhanced Contact Experience
+- **Multi-step Form**: Detailed project inquiry form
+- **Real-time Validation**: Instant feedback on form fields
+- **Project Type Selection**: Dropdown for service types
+- **Budget and Timeline**: Structured project planning
+
+### 4. Performance Features
+- **Lazy Loading**: Images load only when visible
+- **Code Splitting**: JavaScript bundles optimized for loading
+- **Service Worker**: Offline functionality and caching
+- **Network Awareness**: Adapts to connection speed
+
+## 🎨 Design System
+
+### Colors
+- **Primary**: Blue gradient (`#3b82f6` to `#1d4ed8`)
+- **Secondary**: Green gradient (`#22c55e` to `#15803d`)
+- **Accent**: Pink gradient (`#ec4899` to `#be185d`)
+
+### Typography
+- **Font Family**: Inter (Google Fonts)
+- **Headings**: Bold, large scale
+- **Body**: Regular weight, optimized line height
+
+### Animations
+- **Fade In**: Smooth opacity transitions
+- **Slide Up**: Vertical entrance animations
+- **Hover Effects**: Scale and lift interactions
+- **Loading States**: Skeleton screens and spinners
+
+## 📱 Progressive Web App
+
+The portfolio is a full PWA with:
+- **Offline Support**: Works without internet connection
+- **Installable**: Can be installed on desktop and mobile
+- **Service Worker**: Caches resources for fast loading
+- **Responsive**: Adapts to all screen sizes
+- **Touch Friendly**: Optimized for mobile interactions
+
+## 🔧 Configuration
+
+### Environment Variables
+Create a `.env` file for customization:
 ```bash
 npm install
 npm run dev

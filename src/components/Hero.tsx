@@ -1,7 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-export default function Hero() {
   return (
     <section className="relative bg-cream-50 min-h-[90vh] flex items-center">
       <div className="container py-20 md:py-32">
@@ -57,3 +56,5 @@ export default function Hero() {
     </section>
   )
 }
+
+export default Hero
