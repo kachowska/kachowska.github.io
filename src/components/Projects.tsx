@@ -4,13 +4,10 @@ import { useInView } from 'react-intersection-observer'
 import { 
   ExternalLink,
   Github,
-  Filter,
   Search,
-  BarChart3,
   ShoppingCart,
   Home,
   TrendingUp,
-  Eye,
   Star
 } from 'lucide-react'
 
