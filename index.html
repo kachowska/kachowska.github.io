@@ -3,102 +3,86 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="light dark" />
-    
-    <!-- PWA Configuration -->
-    <meta name="theme-color" content="#3b82f6" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="Katsiaryna Portfolio" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    
-    <!-- Performance Hints -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="dns-prefetch" href="//plausible.io" />
-    
-    <script>
-      (function(){
-        try {
-          var stored = localStorage.getItem('theme');
-          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-          var theme = stored || (prefersDark ? 'dark' : 'light');
-          if (theme === 'dark') document.documentElement.classList.add('dark');
-        } catch (e) {}
-      })();
-    </script>
-    <title>Katsiaryna Pukhouskaya — Data Analyst | Enhanced Portfolio</title>
-    <meta name="description" content="Enhanced portfolio of Katsiaryna Pukhouskaya — Data Analyst specializing in business intelligence, machine learning, and data visualization. Transforming data into actionable insights." />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#131d24" />
+
+    <title>Katsiaryna Pukhouskaya — Python Developer &amp; Data Engineer</title>
+    <meta
+      name="description"
+      content="Python Developer, Data Engineer and Data Analyst in Kraków. I build production data systems end to end — FastAPI, PostgreSQL, Docker, Next.js — and run Neirosynt, an AI platform for systematic literature reviews."
+    />
     <link rel="canonical" href="https://kachowska.github.io/" />
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-    <!-- Analytics preconnect -->
     <link rel="preconnect" href="https://plausible.io" />
-    <link rel="dns-prefetch" href="//plausible.io" />
 
-    <!-- Icons / PWA -->
     <link rel="icon" type="image/svg+xml" href="/assets/favicon-B_S-Mdii.svg" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <link rel="mask-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KICA8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjE2IiBmaWxsPSIjMWYyOTM3Ii8+CiAgPHRleHQgeD0iNTAiIHk9IjU3IiBmb250LXNpemU9IjQ2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjBhNWZhIiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiI+SzwvdGV4dD4KPC9zdmc+Cg==" color="#0ea5e9" />
 
-    <!-- Social / Open Graph -->
-    <meta property="og:title" content="Katsiaryna Pukhouskaya — Data Analyst" />
+    <meta property="og:title" content="Katsiaryna Pukhouskaya — Python Developer &amp; Data Engineer" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Katsiaryna Pukhouskaya" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:description" content="Portfolio of Katsiaryna Pukhouskaya (kachowska) — Data Analyst." />
+    <meta
+      property="og:description"
+      content="I build production data systems end to end — backend, data layer, frontend and deployment. Creator and sole engineer of Neirosynt."
+    />
     <meta property="og:image" content="https://kachowska.github.io/assets/share.jpg" />
-    <meta property="og:image:secure_url" content="https://kachowska.github.io/assets/share.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Katsiaryna Pukhouskaya — Data Analyst" />
+    <meta property="og:image:alt" content="Katsiaryna Pukhouskaya — Python Developer and Data Engineer" />
     <meta property="og:url" content="https://kachowska.github.io/" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Katsiaryna Pukhouskaya — Data Analyst" />
-    <meta name="twitter:description" content="Portfolio of Katsiaryna Pukhouskaya (kachowska) — Data Analyst." />
+    <meta name="twitter:title" content="Katsiaryna Pukhouskaya — Python Developer &amp; Data Engineer" />
+    <meta
+      name="twitter:description"
+      content="Python, FastAPI, PostgreSQL, Docker, Next.js. Creator and sole engineer of Neirosynt."
+    />
     <meta name="twitter:image" content="https://kachowska.github.io/assets/share.jpg" />
 
-    <!-- JSON-LD Person -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Katsiaryna Pukhouskaya",
         "url": "https://kachowska.github.io/",
-        "image": "https://kachowska.github.io/image.png",
-        "jobTitle": "Data Analyst",
+        "image": "https://kachowska.github.io/assets/share.jpg",
+        "jobTitle": "Python Developer & Data Engineer",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Kraków",
+          "addressCountry": "PL"
+        },
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "AGH University of Krakow"
+        },
+        "knowsAbout": [
+          "Python",
+          "FastAPI",
+          "PostgreSQL",
+          "Docker",
+          "Data Engineering",
+          "Data Analysis",
+          "Large Language Models"
+        ],
         "sameAs": [
-          "https://github.com/kachowska/",
+          "https://github.com/kachowska",
           "https://www.linkedin.com/in/katsiaryna-pukhouskaya-0086b8195/"
         ]
       }
     </script>
-
-    <!-- JSON-LD WebSite with SearchAction -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "url": "https://kachowska.github.io/",
-        "name": "Katsiaryna Pukhouskaya — Data Analyst",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://duckduckgo.com/?q=site:kachowska.github.io+{search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
-      }
-    </script>
-    <script type="module" crossorigin src="/assets/index-BAYn3av-.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CjxKRY4j.css">
   </head>
   <body>
     <div id="root"></div>
+    <!-- Точка входа Vite. НЕ подменять её ссылками на собранные /assets/*.js —
+         именно так исходники и деплой разошлись в прошлый раз: собранный
+         index.html копировали поверх исходного, и src/ переставал влиять на сайт.
+         Сборку и публикацию делает .github/workflows/deploy.yml. -->
+    <script type="module" src="/src/main.tsx"></script>
     <script defer data-domain="kachowska.github.io" src="https://plausible.io/js/script.js"></script>
   </body>
 </html>

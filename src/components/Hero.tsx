@@ -1,57 +1,75 @@
-import { motion } from 'framer-motion'
+import { ArrowUpRight, Download, Github, Linkedin, MapPin } from 'lucide-react'
+import { PROFILE } from '../data/content'
 
 export default function Hero() {
   return (
-    <section className="relative bg-cream-50 min-h-[90vh] flex items-center">
-      <div className="container py-20 md:py-32">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl mx-auto text-center space-y-8"
+    <section id="top" className="relative overflow-hidden pt-[72px]">
+      <div className="pointer-events-none absolute inset-0 bg-grid opacity-60" aria-hidden="true" />
+      <div
+        className="pointer-events-none absolute -right-64 -top-72 h-[860px] w-[860px] glow-brand"
+        aria-hidden="true"
+      />
+
+      <div className="wrap relative py-20 md:py-28">
+        <div
+          className="max-w-3xl"
         >
-          {/* Minimalist tagline */}
-          <div className="flex items-center justify-center gap-3 mb-8">
-            <div className="h-px w-12 bg-sage-300" />
-            <span className="text-xs uppercase tracking-[0.2em] text-sage-400 font-light">
-              Data Analytics & Development
-            </span>
-            <div className="h-px w-12 bg-sage-300" />
-          </div>
-
-          {/* Main heading with elegant typography */}
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-light leading-[1.1] text-sage-500 tracking-tight">
-            Katsiaryna<br/>
-            <span className="font-serif font-normal">Pukhouskaya</span>
-          </h1>
-
-          {/* Subtitle */}
-          <p className="text-sage-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-light">
-            Turning complex data into clear, actionable insights. Specialized in Python, SQL, 
-            and building interactive data visualizations that drive business decisions.
+          <p className="eyebrow">
+            {PROFILE.roles.join('  ·  ')}
           </p>
 
-          {/* Clean CTA buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-8">
-            <a href="#projects" className="btn btn-primary">
-              View Work
+          <h1 className="mt-5 text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl md:text-6xl">
+            {PROFILE.name}
+          </h1>
+
+          <div className="mt-6 h-[3px] w-[72px] rounded bg-brand-500" />
+
+          <p className="mt-7 max-w-2xl text-lg leading-relaxed text-mist-200 md:text-xl">
+            {PROFILE.tagline}
+          </p>
+
+          <p className="mt-4 max-w-2xl lede">{PROFILE.blurb}</p>
+
+          <div className="mt-9 flex flex-wrap items-center gap-3">
+            <a href="#work" className="btn btn-primary">
+              See the work <ArrowUpRight size={16} />
             </a>
-            <a href="/resume.pdf" className="btn btn-ghost" download>
-              Download CV
+            <a href={PROFILE.resume} download className="btn btn-ghost">
+              <Download size={16} /> CV
+            </a>
+            <a
+              href={PROFILE.github}
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-ghost"
+              aria-label="GitHub profile"
+            >
+              <Github size={16} /> GitHub
+            </a>
+            <a
+              href={PROFILE.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-ghost"
+              aria-label="LinkedIn profile"
+            >
+              <Linkedin size={16} /> LinkedIn
             </a>
           </div>
 
-          {/* Minimal skills indicator */}
-          <div className="pt-12 flex flex-wrap items-center justify-center gap-6 text-xs uppercase tracking-wider text-sage-300">
-            <span>Python</span>
-            <span className="w-1 h-1 rounded-full bg-sage-300" />
-            <span>SQL</span>
-            <span className="w-1 h-1 rounded-full bg-sage-300" />
-            <span>React</span>
-            <span className="w-1 h-1 rounded-full bg-sage-300" />
-            <span>Data Viz</span>
+          <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-mist-400">
+            <span className="inline-flex items-center gap-1.5">
+              <MapPin size={14} /> {PROFILE.location}
+            </span>
+            <span className="inline-flex items-center gap-2">
+              <span className="relative flex h-2 w-2" aria-hidden="true">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-400 opacity-70" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-500" />
+              </span>
+              {PROFILE.availability}
+            </span>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

@@ -1,42 +1,64 @@
-export default function Skills() {
-  const skills = [
-    'Python', 'Pandas', 'NumPy', 'SQL', 'Plotly', 'Streamlit',
-    'Statsmodels', 'A/B testing', 'Cohort analysis', 'ETL',
-    'React', 'TypeScript', 'TailwindCSS'
-  ]
-  return (
-    <section id="skills" className="container section-padding bg-white">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="h-px w-12 bg-sage-300" />
-            <span className="text-xs uppercase tracking-[0.2em] text-sage-400 font-light">
-              Expertise
-            </span>
-            <div className="h-px w-12 bg-sage-300" />
-          </div>
-          <h2 className="font-serif text-4xl md:text-5xl font-light text-sage-500">Skills</h2>
-        </div>
+import { ALSO_USED, LANGUAGES, SKILL_GROUPS } from '../data/content'
 
-        <div className="flex flex-wrap gap-3 justify-center mb-16">
-          {skills.map(s => (
-            <span 
-              key={s} 
-              className="px-4 py-2 border border-sage-200 text-sage-500 text-sm font-light hover:border-sage-300 transition-colors"
+export default function Skills() {
+  return (
+    <section id="skills" className="section border-t border-white/[0.06] bg-ink-800/40">
+      <div className="wrap">
+        <p className="eyebrow">Toolset</p>
+        <h2 className="h2 mt-4">Skills</h2>
+        <p className="mt-4 max-w-2xl lede">
+          Grouped by what they are actually for. Everything here has been used on something that
+          shipped or was graded — not read about.
+        </p>
+
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {SKILL_GROUPS.map((group, i) => (
+            <div
+              key={group.label}
+              className="card animate-rise p-6"
+              style={{ animationDelay: `${Math.min(i, 5) * 50}ms` }}
             >
-              {s}
-            </span>
+              <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-brand-400">
+                {group.label}
+              </h3>
+              <ul className="mt-4 flex flex-wrap gap-1.5">
+                {group.items.map((item) => (
+                  <li key={item} className="chip">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
 
-        <div className="text-center">
-          <h3 className="font-serif text-2xl font-light text-sage-500 mb-6">Languages</h3>
-          <ul className="space-y-2 text-sage-400 font-light">
-            <li>English — B2</li>
-            <li>Polish — C1</li>
-            <li>Russian — Native</li>
-            <li>Belarusian — Native</li>
-          </ul>
+        <div className="mt-10 grid gap-6 md:grid-cols-[1fr_1fr]">
+          <div className="card p-6">
+            <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-brand-400">
+              Also worked with
+            </h3>
+            <ul className="mt-4 flex flex-wrap gap-1.5">
+              {ALSO_USED.map((item) => (
+                <li key={item} className="chip">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="card p-6">
+            <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-brand-400">
+              Languages
+            </h3>
+            <dl className="mt-4 grid gap-x-8 gap-y-2 sm:grid-cols-2">
+              {LANGUAGES.map((l) => (
+                <div key={l.name} className="flex items-baseline justify-between gap-3 text-sm">
+                  <dt className="text-mist-100">{l.name}</dt>
+                  <dd className="text-mist-400">{l.level}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </div>
       </div>
     </section>
