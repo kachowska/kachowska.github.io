@@ -10,10 +10,8 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      <div className="wrap relative py-20 md:py-28">
-        <div
-          className="max-w-3xl"
-        >
+      <div className="wrap relative grid items-center gap-12 py-20 md:py-28 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16">
+        <div className="max-w-3xl">
           <p className="eyebrow">
             {PROFILE.roles.join('  ·  ')}
           </p>
@@ -68,6 +66,28 @@ export default function Hero() {
               </span>
               {PROFILE.availability}
             </span>
+          </div>
+        </div>
+
+        {/* Портрет идёт вторым в DOM: на узких экранах текст должен читаться
+            первым, а не отодвигаться фотографией на экран вниз. */}
+        <div className="order-first lg:order-none">
+          <div className="relative h-40 w-40 sm:h-48 sm:w-48 lg:h-64 lg:w-64">
+            <div
+              className="absolute -inset-2 rounded-full bg-brand-500/20 blur-2xl"
+              aria-hidden="true"
+            />
+            <img
+              src="/assets/portrait.jpg"
+              alt="Katsiaryna Pukhouskaya"
+              width={560}
+              height={560}
+              // fetchPriority=high: изображение в первом экране, браузер иначе
+              // откладывает его и шапка «доезжает» уже после текста.
+              fetchPriority="high"
+              decoding="async"
+              className="relative h-full w-full rounded-full object-cover ring-1 ring-white/10"
+            />
           </div>
         </div>
       </div>
