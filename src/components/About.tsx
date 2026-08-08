@@ -1,10 +1,15 @@
-import { PROFILE } from '../data/content'
+import { LANGUAGES, PROFILE } from '../data/content'
 
+/**
+ * Раздел о человеке, а не о продукте. Первая версия была целиком про Neirosynt,
+ * включая все четыре цифры, — на личном портфолио это перекос: проект тут один
+ * из нескольких, а не тема страницы.
+ */
 const FACTS = [
-  { value: '4', label: 'research sources integrated' },
-  { value: '395', label: 'backend tests' },
-  { value: '30', label: 'database migrations' },
-  { value: '1', label: 'engineer on the project' },
+  { value: '17', label: 'public repositories' },
+  { value: '5', label: 'languages spoken' },
+  { value: '5', label: 'write-ups published' },
+  { value: '2027', label: 'BEng, AGH Kraków' },
 ]
 
 export default function About() {
@@ -13,36 +18,34 @@ export default function About() {
       <div className="wrap grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
         <div>
           <p className="eyebrow">About</p>
-          <h2 className="h2 mt-4">Why I build the unglamorous parts</h2>
+          <h2 className="h2 mt-4">How I work</h2>
 
           <div className="mt-6 space-y-4 lede">
             <p>
-              I started with data analysis — Python, SQL, dashboards — and kept running into the
-              same wall: the analysis was fine, but nobody could check it. The numbers arrived
-              without a path back to where they came from.
+              I am a software engineer working across data and web. Python is my core language —
+              FastAPI and SQLAlchemy for services, pandas and NumPy for analysis, pytest to keep
+              both honest. I design relational schemas, write the migrations that evolve them, and
+              treat the database as something to be modelled rather than dumped into.
             </p>
             <p>
-              Then I spent two months editing law theses, fixing other people&apos;s citations. That
-              is where the problem got specific: academic writing is judged on traceability, and
-              the tooling for it is either manual or dishonest. Generative models made it worse —
-              they produce references that look right and do not exist.
+              On the front I work in TypeScript with React and Next.js, and I deploy what I build:
+              Docker, nginx, Linux, CI that runs the tests before anything reaches production. That
+              range is deliberate. Being able to follow a problem from the schema to the screen
+              means I am never blocked waiting for someone else to own the next layer.
             </p>
             <p>
-              So I built Neirosynt around a single rule: a claim without a verifiable source does
-              not enter the text. The system searches real databases, shows why each paper was kept
-              or dropped, and links every conclusion back to the paper behind it. Being the only
-              engineer meant learning the whole stack — API design, migrations, containers, release
-              safety, cost control — because there was nobody else to hand it to.
+              A growing part of my work is applied AI. The interesting engineering there is not the
+              prompt — it is choosing the right model for each task, keeping token spend bounded and
+              measurable, and validating what comes back before a user ever sees it.
             </p>
             <p>
-              That is the kind of work I want to keep doing: systems where the output can be
-              checked, and where the person relying on it can see how it was produced.
+              I read and write technically in five languages, study engineering at AGH in Kraków,
+              and look for work where correctness matters and where I can own a system rather than a
+              ticket.
             </p>
           </div>
 
-          <p className="mt-8 text-sm text-mist-400">
-            Based in {PROFILE.location}.
-          </p>
+          <p className="mt-8 text-sm text-mist-400">Based in {PROFILE.location}.</p>
         </div>
 
         <div className="lg:pt-16">
@@ -59,9 +62,19 @@ export default function About() {
             ))}
           </div>
 
-          <p className="mt-5 text-xs leading-relaxed text-mist-500">
-            Figures describe Neirosynt, the platform in the first project below.
-          </p>
+          <div className="card mt-4 p-5">
+            <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-brand-400">
+              Languages
+            </h3>
+            <dl className="mt-4 space-y-1.5">
+              {LANGUAGES.map((l) => (
+                <div key={l.name} className="flex items-baseline justify-between gap-3 text-sm">
+                  <dt className="text-mist-100">{l.name}</dt>
+                  <dd className="text-mist-400">{l.level}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </div>
       </div>
     </section>

@@ -10,10 +10,9 @@
 export const PROFILE = {
   name: 'Katsiaryna Pukhouskaya',
   roles: ['Python Developer', 'Data Engineer', 'Data Analyst'],
-  tagline:
-    'I build production data systems end to end — backend, data layer, frontend and deployment.',
+  tagline: 'Python, SQL and TypeScript across the whole stack — data, API, interface, deployment.',
   blurb:
-    'I like the parts most people skip: migrations, tests, cost control and release safety. Right now I design and run Neirosynt, an AI platform for systematic literature reviews, as its only engineer.',
+    'I design schemas, write the services that sit on top of them, build the interface, and ship the result myself. I am at my best on systems where correctness can be checked rather than assumed.',
   location: 'Kraków, Poland · open to remote',
   email: 'ekaterina.puxovskaya@gmail.com',
   github: 'https://github.com/kachowska',
@@ -109,6 +108,21 @@ export const PROJECTS: Project[] = [
     featured: true,
   },
   {
+    name: 'Paraphrase Engine',
+    kind: 'AI service · Telegram',
+    summary:
+      'A paraphrasing service for academic text, built as five separate blocks: a Telegram interface, a task orchestrator, the rewriting core, a document builder and a logging layer.',
+    highlights: [
+      'Runs OpenAI, Anthropic Claude and Google Gemini in parallel on the same fragment, evaluates the candidates and picks the best one — then a final pass smooths the result',
+      'Rewrites .docx in place with formatting preserved: replacements are applied in reverse document order so earlier edits cannot shift later offsets',
+      'Asynchronous task lifecycle, so a long document does not block the bot',
+      'Operational logging into Google Sheets — usage and errors are visible without opening a server',
+    ],
+    stack: ['Python 3.11', 'Telegram Bot API', 'OpenAI', 'Claude', 'Gemini', 'python-docx', 'Docker'],
+    repo: 'https://github.com/kachowska/paraphrase_engine',
+    featured: true,
+  },
+  {
     name: 'GOST & VAK bibliography formatter',
     kind: 'REST API · Claude',
     summary:
@@ -176,6 +190,70 @@ export const PROJECTS: Project[] = [
   },
 ]
 
+/**
+ * Остальные публичные репозитории — компактным списком.
+ * Крупные карточки выше отданы тому, что показывает инженерный уровень;
+ * здесь всё прочее, чтобы картина была полной, а не выборочной.
+ */
+export type Repo = { name: string; lang: string; note: string; year: string }
+
+export const MORE_REPOS: Repo[] = [
+  {
+    name: 'plagiatanet_web',
+    lang: 'TypeScript · HTML',
+    note: 'Web front end for the paraphrasing service',
+    year: '2026',
+  },
+  {
+    name: 'plagiatanet_bot_client',
+    lang: 'TypeScript',
+    note: 'Bot client for the same service',
+    year: '2026',
+  },
+  {
+    name: 'plagiatanet-adminer',
+    lang: 'Docker',
+    note: 'Adminer database console, containerised for deployment',
+    year: '2025',
+  },
+  {
+    name: 'kachowska.github.io',
+    lang: 'React · Vite',
+    note: 'This site — React, Tailwind, built and deployed by GitHub Actions',
+    year: '2026',
+  },
+  {
+    name: 'sea-battle',
+    lang: 'JavaScript',
+    note: 'Battleship in the browser',
+    year: '2025',
+  },
+  {
+    name: 'rpg-game',
+    lang: 'HTML · JavaScript',
+    note: 'Browser RPG — state machines and turn logic',
+    year: '2025',
+  },
+  {
+    name: 'piraci-game',
+    lang: 'C++',
+    note: 'Pirate game — my first larger program, university coursework',
+    year: '2024',
+  },
+  {
+    name: 'Statki',
+    lang: '—',
+    note: 'Earlier take on the battleship problem',
+    year: '2025',
+  },
+  {
+    name: 'School-Project',
+    lang: 'HTML',
+    note: 'Early coursework, kept for the record',
+    year: '2025',
+  },
+]
+
 export type Role = {
   title: string
   org: string
@@ -205,8 +283,8 @@ export const EXPERIENCE: Role[] = [
     meta: 'Remote',
     period: 'Apr — May 2025',
     points: [
-      'Edited and restructured law theses and coursework: tightened argument structure, fixed sourcing and citation.',
-      'Raised originality scores by 50%+ on average — and got my first close look at how academic writing handles its sources, and where that handling breaks. It is the reason Neirosynt exists.',
+      'Restructured law theses and coursework: argument order, sourcing, citation integrity.',
+      'Raised originality scores by more than 50% on average across the work I handled.',
     ],
   },
 ]

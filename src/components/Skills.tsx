@@ -1,4 +1,4 @@
-import { ALSO_USED, LANGUAGES, SKILL_GROUPS } from '../data/content'
+import { ALSO_USED, SKILL_GROUPS } from '../data/content'
 
 export default function Skills() {
   return (
@@ -32,7 +32,7 @@ export default function Skills() {
           ))}
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-[1fr_1fr]">
+        <div className="mt-10">
           <div className="card p-6">
             <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-brand-400">
               Also worked with
@@ -46,19 +46,6 @@ export default function Skills() {
             </ul>
           </div>
 
-          <div className="card p-6">
-            <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-brand-400">
-              Languages
-            </h3>
-            <dl className="mt-4 grid gap-x-8 gap-y-2 sm:grid-cols-2">
-              {LANGUAGES.map((l) => (
-                <div key={l.name} className="flex items-baseline justify-between gap-3 text-sm">
-                  <dt className="text-mist-100">{l.name}</dt>
-                  <dd className="text-mist-400">{l.level}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
         </div>
       </div>
     </section>
