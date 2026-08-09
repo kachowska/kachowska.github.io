@@ -1,5 +1,5 @@
 import { ExternalLink, Github } from 'lucide-react'
-import { MORE_REPOS, PROFILE, PROJECTS, type Project } from '../data/content'
+import { PROJECTS, type Project } from '../data/content'
 
 function Links({ project }: { project: Project }) {
   return (
@@ -142,43 +142,6 @@ export default function Projects() {
           </div>
         </div>
 
-        <div className="mt-16 border-t border-white/[0.07] pt-10">
-          <div className="flex flex-wrap items-baseline justify-between gap-4">
-            <h3 className="font-mono text-[11px] uppercase tracking-[0.22em] text-brand-400">
-              Also on GitHub
-            </h3>
-            <a
-              href={PROFILE.github}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm link-quiet"
-            >
-              <Github size={15} /> All repositories
-            </a>
-          </div>
-
-          <ul className="mt-6 grid gap-x-8 gap-y-px sm:grid-cols-2 lg:grid-cols-3">
-            {MORE_REPOS.map((r) => (
-              <li key={r.name} className="border-b border-white/[0.05]">
-                <a
-                  href={`https://github.com/kachowska/${r.name}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group flex flex-col gap-0.5 py-3.5 transition-colors"
-                >
-                  <span className="flex items-baseline justify-between gap-3">
-                    <span className="font-mono text-[13px] text-mist-100 transition-colors group-hover:text-brand-300">
-                      {r.name}
-                    </span>
-                    <span className="shrink-0 font-mono text-[11px] text-mist-500">{r.year}</span>
-                  </span>
-                  <span className="text-[13px] leading-snug text-mist-400">{r.note}</span>
-                  <span className="font-mono text-[11px] text-mist-500">{r.lang}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
     </section>
   )
